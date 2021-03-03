@@ -1,7 +1,11 @@
-FROM python:3.9.1-alpine3.13
+ARG ${BASE_IMAGE}
+FROM ${BASE_IMAGE}
 
 ARG UID=1000
 ARG VERSION
+
+COPY .cache /root/.cache
+COPY .cargo /root/.cargo
 
 RUN set -eux ; \
   adduser -D -u ${UID} -h /dropbox dropbox ; \
